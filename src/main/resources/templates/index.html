@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title>Salary Slip Calculation</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+       
+      <script th:src="@{/main.js}"></script>
+      <link th:href="@{/main.css}" rel="stylesheet" />
+       
+      <head>
+   <body ng-app="EmployeeManagement" ng-controller="EmployeeController">
+      <h3>
+         Salary Slip Calculation
+      </h3>
+      <form ng-submit="submitEmployee()">
+         <table border="0">
+            <tr>
+               <td>Designation</td>
+               <td><input type="text" ng-model="employee.designation" /></td>
+            </tr>
+            <tr>
+               <td>Date Of Joining</td>
+               <td><input type="date" ng-model="employee.dateOfJoining"  /></td>
+            </tr>
+			<tr>
+               <td>Retirement Date</td>
+               <td><input type="date" ng-model="employee.retirementDate"  /></td>
+            </tr>
+			<tr>
+               <td>Basic Pay</td>
+               <td><input type="double" ng-model="employee.basicPay"  /></td>
+            </tr>
+			<tr>
+               <td>DA</td>
+               <td><input type="double" ng-model="employee.da"  /></td>
+            </tr>
+			<tr>
+               <td>specialAllowance</td>
+               <td><input type="double" ng-model="employee.specialAllowance"  /></td>
+            </tr>
+			<tr>
+               <td>professionalTax</td>
+               <td><input type="double" ng-model="employee.professionalTax"  /></td>
+            </tr>
+			<tr>
+               <td>PF</td>
+               <td><input type="double" ng-model="employee.pf"  /></td>
+            </tr>
+            <tr>
+               <td colspan="2">
+                  <input type="submit" value="Submit" class="blue-button" />
+               </td>
+            </tr>
+         </table>
+      </form>
+      <br/>
+      <a class="create-button" ng-click="createEmployee()">Create Employee</a>
+      <table border="1">
+         <tr>
+            <th>Emp Id</th>
+            <th>Designation</th>
+            <th>Date Of Joining</th>
+			<th>Retirement Date</th>
+			<th>Basic Pay</th>
+			<th>DA</th>
+			<th>Special Allowance</th>
+			<th>Professional Tax</th>
+			<th>PF</th>
+            <th>Edit</th>
+            <th>Delete</th>
+         </tr>
+         <!-- $scope.employees -->
+         <tr ng-repeat="employee in employees">
+            <td> {{ employee.empId }}</td>
+            <td> {{ employee.designation }}</td>
+            <td >{{ employee.dateOfJoining }}</td>
+			<td >{{ employee.retirementDate }}</td>
+			<td >{{ employee.basicPay }}</td>
+			<td >{{ employee.da }}</td>
+			<td >{{ employee.specialAllowance }}</td>
+			<td >{{ employee.professionalTax }}</td>
+			<td >{{ employee.pf }}</td>
+            <td>
+            <a ng-click="editEmployee(employee)" class="edit-button">Edit</a>
+            </td>
+            <td>
+            <a ng-click="deleteEmployee(employee)" class="delete-button">Delete</a>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>
